@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+// App.jsx
+import React, { useState, useEffect } from "react";
+import Card from "./components/card/card";
+import Pagination from "./components/pagination/pagination";
+import LoadingSpinner from "./components/loader/loader";
+import axios from "axios";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(5);
+  const [cardsData, setCardsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://buyc-backend-nu.vercel.app/api/all"
+        );
+        setCardsData(response.data.cars);
+        setLoading(false); // Set loading to false after fetching data
+      } catch (error) {
+        console.error("Error fetching cars:", error.message);
+        setLoading(false); // Set loading to false in case of an error
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Get current cards
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = cardsData.slice(indexOfFirstCard, indexOfLastCard);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {loading && <LoadingSpinner />} 
+      <div className="cards-container">
+        {currentCards.map((card, index) => (
+          <Card key={index} title={card.manufacturer_model} content={`List Price: Rs.${card.list_price.toLocaleString()}`} />
+        ))}
+      </div>
+      <Pagination
+        cardsPerPage={cardsPerPage}
+        totalCards={cardsData.length}
+        currentPage={currentPage}
+        paginate={paginate}
+      />
+      <p className="pagination-status">
+        Page {currentPage} of {Math.ceil(cardsData.length / cardsPerPage)}
+      </p>
     </div>
   );
-}
+};
 
 export default App;
