@@ -8,7 +8,7 @@ import "./App.css";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(5);
+  const [cardsPerPage] = useState(2);
   const [cardsData, setCardsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ const App = () => {
       {loading && <LoadingSpinner />} 
       <div className="cards-container">
         {currentCards.map((card, index) => (
-          <Card key={index} title={card.manufacturer_model} content={`List Price: Rs.${card.list_price.toLocaleString()}`} />
+          <Card key={index} image_url={card.image_url} title={card.manufacturer_model} content={`List Price: Rs.${card.list_price.toLocaleString()}`} />
         ))}
       </div>
       <Pagination

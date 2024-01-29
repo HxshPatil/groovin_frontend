@@ -1,4 +1,4 @@
-.App{
+.app{
   align-items: center;
 }
 body {
@@ -25,7 +25,7 @@ body {
 
 .pagination button {
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #0835e7;
   color: white;
   border: none;
   padding: 10px;
