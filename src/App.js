@@ -8,7 +8,7 @@ import "./App.css";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(2);
+  const [cardsPerPage] = useState(20);
   const [cardsData, setCardsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
