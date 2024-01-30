@@ -1,28 +1,38 @@
 /* card.css */
 
 .card-container {
-    /* background-color: #231942; */
+    border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
     margin: 10px;
     width: 300px;
     height: fit-content;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .image-container {
     overflow: hidden;
-    height: 200px; /* Set the fixed height for the image container */
+    height: 200px; 
   }
   
   .image-container img {
     display: block;
     width: 100%;
-    height: 100%; /* Ensure the image takes up 100% of the container height */
+    height: 100%; 
+  }
+
+  .card-body{
+    padding-left: 10px;
+  }
+
+  .card-title{
+    padding-left: 10px;
+  }
+
+  .card-title h2{
+    margin:0;
+
   }
   
-  .card-title h3 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
+  
   

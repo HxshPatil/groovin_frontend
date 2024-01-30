@@ -2,7 +2,7 @@
 import React from "react";
 import "./card.css";
 
-const Card = ({ title, content, image_url }) => {
+const Card = ({ title, price, image_url, color }) => {
   return (
     <div className="card-container">
       <div className="image-container">
@@ -11,9 +11,10 @@ const Card = ({ title, content, image_url }) => {
       </div>
       <div className="container-body">
         <div className="card-title">
-          <h3>{title}</h3>
-        </div>
-        <p>{content}</p>
+          <h2>{title}</h2> 
+        </div >
+        <div className="card-body"><p>{price}</p></div>
+        
       </div>
     </div>
   );
