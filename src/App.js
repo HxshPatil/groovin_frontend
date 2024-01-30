@@ -56,7 +56,7 @@ const App = () => {
     <div className="app">
       {loading && <LoadingSpinner />}
       <div className="page-container">
-      <div className="cards-per-page-container">
+      {/* <div className="cards-per-page-container">
         <label htmlFor="cardsPerPage">Cards per Page:</label>
         <input
           type="number"
@@ -66,7 +66,7 @@ const App = () => {
           min="1"
         />
         <button onClick={handleApplyChanges}>Apply Changes</button>
-      </div>
+      </div> */}
       <div className="cards-container">
         {currentCards.map((card, index) => (
           <Card
