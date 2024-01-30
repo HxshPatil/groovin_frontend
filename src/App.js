@@ -19,8 +19,8 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // `https://groovin-backend.vercel.app/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
-          `http://localhost:8000/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
+          `https://groovin-backend.vercel.app/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
+          // `http://localhost:8000/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
           );
 
         const newCardsData = response.data.cardsData || [];
