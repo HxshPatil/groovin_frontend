@@ -5,6 +5,7 @@ import Pagination from "./components/pagination/pagination";
 import LoadingSpinner from "./components/loader/loader";
 import axios from "axios";
 import "./App.css";
+import Navbar from "./components/navbar/navbar";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,7 +57,9 @@ const App = () => {
   return (
     <div className="app">
       {loading && <LoadingSpinner />}
+      
       <div className="page-container">
+      {/* <Navbar/> */}
         <div className="cards-container">
           {currentCards.map((card, index) => (
             <Card
@@ -65,6 +68,7 @@ const App = () => {
               title={card.cap}
               price={card.list_price.toLocaleString()}
               colors={card.colors}
+              rating={card.ratings}
             />
           ))}
         </div>

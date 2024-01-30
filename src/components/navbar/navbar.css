@@ -1,0 +1,38 @@
+/* Add your styles for Navbar component here */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px; */
+    background-color: #333;
+    color: white;
+    width:100%;
+    height:80px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .cart-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .cart-icon {
+    min-height: 70px;
+    font-size: 10.5rem;
+    margin-right: 5px;
+    background: #ffffff;
+    z-index: 1;
+  }
+  
+  .cart-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1rem;
+  }
+  

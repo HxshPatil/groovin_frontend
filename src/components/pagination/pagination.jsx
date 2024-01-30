@@ -1,4 +1,3 @@
-// Pagination.jsx
 import React from "react";
 
 const Pagination = ({ cardsPerPage, totalCards, currentPage, paginate }) => {
@@ -39,7 +38,7 @@ const Pagination = ({ cardsPerPage, totalCards, currentPage, paginate }) => {
         </button>
       )}
       {Array.from({ length: endPage - startPage + 1 }).map((_, index) => (
-        <button
+        <button 
           key={startPage + index}
           onClick={() => paginate(startPage + index)}
           className={currentPage === startPage + index ? "active" : ""}

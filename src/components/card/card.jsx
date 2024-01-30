@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./card.css";
+import StarRating from "../starRating/starRating";
 
-const Card = ({ title, price, imageUrls, colors }) => {
+const Card = ({ title, price, imageUrls, colors, rating }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const handleColorChange = (color) => {
@@ -14,26 +15,27 @@ const Card = ({ title, price, imageUrls, colors }) => {
         {/* Use the selectedColor to determine the index for the image_urls array */}
         <img src={imageUrls[colors.indexOf(selectedColor)]} alt={title} />
       </div>
-      <div className="container-body">
-        <div className="card-title">
-          <h2>{title}</h2>
-        </div>
-        <div className="color-buttons-container">
-          {colors.map((color, index) => (
-            <button
-              key={index}
-              className={`color-button ${color === selectedColor ? 'selected' : ''}`}
-              style={{ backgroundColor: color }}
-              onClick={() => handleColorChange(color)}
-            />
-          ))}
-        </div>
+          
         <div className="card-body">
-          <small>{selectedColor}</small>
+        <h4>{title}</h4>
+
           <h3 className="price-container">${price}</h3>
+          <div className="color-buttons-container">
+            {colors.map((color, index) => (
+              
+              <button
+                key={index}
+                className={`color-button ${color === selectedColor ? 'selected' : ''}`}
+                style={{ backgroundColor: color }}
+                onClick={() => handleColorChange(color)}
+              />
+            ))}
+          </div>
+          <div className="rating-div">
+            <StarRating rating={rating} />
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

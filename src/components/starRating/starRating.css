@@ -1,0 +1,25 @@
+.star-rating-container {
+    display: flex;
+    
+  }
+  
+  .star-icon {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .star-icon.filled {
+    color: purple; /* Color for filled stars */
+  }
+  
+  .star-icon.half-filled {
+    color: purple;
+  }
+  
+  .star-icon.outline {
+    color: purple;
+    width: 15px; /* Set the width to maintain the size */
+    height: 15px; /* Set the height to maintain the size */
+    margin-left: 2px; /* Adjust margin for outline stars */
+  }
+  
