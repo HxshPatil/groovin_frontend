@@ -9,6 +9,12 @@ body {
   margin: 20px;
 }
 
+.page-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -25,16 +31,21 @@ body {
 
 .pagination button {
   cursor: pointer;
-  background-color: #0835e7;
-  color: white;
-  border: none;
-  padding: 10px;
+  color: black;
+  background-color: #ffffff;
+  border: 1px solid black; /* Specify style, width, and color */
+  padding: 10px 15px;
   margin: 5px;
-  border-radius: 4px;
 }
 
 .pagination button:hover {
-  background-color: #45a049;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.active {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .cards-container {
@@ -42,3 +53,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* .cards-per-page-container{
+
+} */

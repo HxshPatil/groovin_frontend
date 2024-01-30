@@ -14,23 +14,25 @@ const App = () => {
   const [totalCars, setTotalCars] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `https://groovin-backend.vercel.app/api/all?page=${currentPage}&perPage=${cardsPerPage}`
         );
-        setCardsData(response.data.cardsData || []);
-        setTotalCars(response.data.totalCount || 0);
+
+        const newCardsData = response.data.cardsData || [];
+        const newTotalCars = response.data.totalCount || 0;
+
+        setCardsData(newCardsData);
+        setTotalCars(newTotalCars);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching cars:", error.message);
         setLoading(false);
       }
     };
+
     fetchData();
   }, [currentPage, cardsPerPage]);
 
@@ -48,34 +50,12 @@ const App = () => {
     setCurrentPage(pageNumber);
   };
 
-  const currentCards = Array.isArray(cardsData)
-    ? cardsData.slice(indexOfFirstCard, indexOfLastCard)
-    : [];
+  const currentCards = Array.isArray(cardsData) ? cardsData : [];
 
   return (
     <div className="app">
       {loading && <LoadingSpinner />}
-      <div className="cards-container">
-        {currentCards.map((card, index) => (
-          <Card
-            key={index}
-            image_url={card.image_url}
-            title={card.manufacturer_model}
-            price={`Rs.${card.list_price.toLocaleString()}/-`}
-            color={card.colors}
-          />
-        ))}
-      </div>
-      <Pagination
-        cardsPerPage={cardsPerPage}
-        totalCards={totalCars}
-        currentPage={currentPage}
-        paginate={handlePageChange}
-      />
-      <p className="pagination-status">
-        Page {currentPage} of {Math.ceil(totalCars / cardsPerPage)}
-      </p>
-
+      <div className="page-container">
       <div className="cards-per-page-container">
         <label htmlFor="cardsPerPage">Cards per Page:</label>
         <input
@@ -87,9 +67,32 @@ const App = () => {
         />
         <button onClick={handleApplyChanges}>Apply Changes</button>
       </div>
+      <div className="cards-container">
+        {currentCards.map((card, index) => (
+          <Card
+            key={index}
+            image_url={card.image_url}
+            title={card.manufacturer_model}
+            price={card.list_price.toLocaleString()}
+            color={card.colors}
+          />
+        ))}
+      </div>
+      <div className="pagination-container"><Pagination
+        cardsPerPage={cardsPerPage}
+        totalCards={totalCars}
+        currentPage={currentPage}
+        paginate={handlePageChange}
+      /></div>
+      <p className="pagination-status">
+        Page {currentPage} of {Math.ceil(totalCars / cardsPerPage)}
+      </p>
+      </div>
+
+
+      
     </div>
   );
 };
 
 export default App;
-

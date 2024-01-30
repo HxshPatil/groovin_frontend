@@ -8,26 +8,54 @@ const Pagination = ({ cardsPerPage, totalCards, currentPage, paginate }) => {
     return null; // Don't display pagination if there's only one page
   }
 
+  // Calculate the range of page numbers to display
+  const maxPagesToShow = 6;
+  let startPage, endPage;
+
+  if (pageNumbers <= maxPagesToShow) {
+    // Display all pages if total pages are less than or equal to maxPagesToShow
+    startPage = 1;
+    endPage = pageNumbers;
+  } else {
+    // Calculate the range based on the current page
+    const halfPagesToShow = Math.floor(maxPagesToShow / 2);
+    if (currentPage <= halfPagesToShow + 1) {
+      startPage = 1;
+      endPage = maxPagesToShow;
+    } else if (currentPage + halfPagesToShow >= pageNumbers) {
+      startPage = pageNumbers - maxPagesToShow + 1;
+      endPage = pageNumbers;
+    } else {
+      startPage = currentPage - halfPagesToShow;
+      endPage = currentPage + halfPagesToShow;
+    }
+  }
+
   return (
     <div className="pagination">
-      <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
-        Prev
-      </button>
-      {Array.from({ length: pageNumbers }).map((_, index) => (
+      {currentPage !== 1 && (
+        <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+          Prev
+        </button>
+      )}
+      {Array.from({ length: endPage - startPage + 1 }).map((_, index) => (
         <button
-          key={index + 1}
-          onClick={() => paginate(index + 1)}
-          className={currentPage === index + 1 ? "active" : ""}
+          key={startPage + index}
+          onClick={() => paginate(startPage + index)}
+          className={currentPage === startPage + index ? "active" : ""}
+          style={currentPage === startPage + index ? { backgroundColor: "#000000", color: "#ffffff" } : {}}
         >
-          {index + 1}
+          {startPage + index}
         </button>
       ))}
-      <button
-        onClick={() => paginate(currentPage + 1)}
-        disabled={currentPage === pageNumbers}
-      >
-        Next
-      </button>
+      {currentPage !== pageNumbers && (
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === pageNumbers}
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 };
