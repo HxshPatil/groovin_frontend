@@ -83,11 +83,12 @@ const App = () => {
         totalCards={totalCars}
         currentPage={currentPage}
         paginate={handlePageChange}
-      /></div>
+      />
+      {/* </div>
       <p className="pagination-status">
         Page {currentPage} of {Math.ceil(totalCars / cardsPerPage)}
       </p>
-      </div>
+      </div> */}
 
 
       
