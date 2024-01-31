@@ -1,38 +1,29 @@
-/* Add your styles for Navbar component here */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 10px; */
-    background-color: #333;
-    color: white;
-    width:100%;
-    height:80px;
-  }
+  display: flex;
+  justify-content: space-between; /* Align items to both ends of the container */
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(214, 218, 218);
+}
+
+.cart-container {
+  display: flex;
+  padding-right: 10px;
+}
+
+.cart-icon {
+  font-size: 25px;
+  cursor: pointer;
+  color: black;
   
-  .logo {
-    font-size: 1.5rem;
-  }
-  
-  .cart-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  
-  .cart-icon {
-    min-height: 70px;
-    font-size: 10.5rem;
-    margin-right: 5px;
-    background: #ffffff;
-    z-index: 1;
-  }
-  
-  .cart-count {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 1rem;
-  }
-  
+}
+
+.cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 0.8rem;
+  margin-left: -10px;
+}

@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from "react";
 import Card from "./components/card/card";
 import Pagination from "./components/pagination/pagination";
@@ -14,6 +13,7 @@ const App = () => {
   const [cardsData, setCardsData] = useState([]);
   const [totalCars, setTotalCars] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [cartItemsCount, setCartItemsCount] = useState(0); // New state for cart items count
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ const App = () => {
         const response = await axios.get(
           `https://groovin-backend.vercel.app/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
           // `http://localhost:8000/api/allCaps?page=${currentPage}&perPage=${cardsPerPage}`
-          );
+        );
 
         const newCardsData = response.data.cardsData || [];
         const newTotalCars = response.data.totalCount || 0;
@@ -52,14 +52,17 @@ const App = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleAddToCart = () => {
+    setCartItemsCount((prevCount) => prevCount + 1);
+  };
+
   const currentCards = Array.isArray(cardsData) ? cardsData : [];
 
   return (
     <div className="app">
-      {loading && <LoadingSpinner />}
-      
+      {/* {loading && <LoadingSpinner />} */}
+      <Navbar cartItemsCount={cartItemsCount} />
       <div className="page-container">
-      {/* <Navbar/> */}
         <div className="cards-container">
           {currentCards.map((card, index) => (
             <Card
@@ -69,6 +72,7 @@ const App = () => {
               price={card.list_price.toLocaleString()}
               colors={card.colors}
               rating={card.ratings}
+              onAddToCart={handleAddToCart} // Pass the function to update cart items count
             />
           ))}
         </div>

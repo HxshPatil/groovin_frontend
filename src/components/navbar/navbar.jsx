@@ -1,13 +1,15 @@
 import React from "react";
-import { FaCartArrowDown } from "react-icons/fa";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { FaCircle } from "react-icons/fa";
 import "./navbar.css";
 
 const Navbar = ({ cartItemsCount }) => {
   return (
     <div className="navbar">
+      <div className="heading">Goovin</div>
       <div className="cart-container">
-        <FaCartArrowDown className="cart-icon" />
-        <div className="cart-count">{cartItemsCount}</div>
+        <HiOutlineShoppingBag className="cart-icon" />
+        {cartItemsCount > 0 && <div className="cart-count">{cartItemsCount}</div>}
       </div>
     </div>
   );
