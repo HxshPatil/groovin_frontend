@@ -103,18 +103,7 @@ h4 {
 
 
 @media only screen and (max-width:768px) {
-  .card-container {
-    width: 33.3%;
-  }
-
-  .cart-container-card svg{
-    opacity:1;
-  }
-
   
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px){
   .card-container {
     width: 50%;
   }
@@ -125,5 +114,16 @@ h4 {
 
   .card-body h2 {
     font-size: 14px;
+  }
+  .cart-container-card svg{
+    opacity:1;
+  }
+
+  
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+  .card-container {
+    width: 33.3%;
   }
 }
