@@ -1,21 +1,20 @@
 .card-container {
-  /* overflow: hidden; */
   width: 25%;
   padding: 8px;
   display: grid;
-
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container {
   mix-blend-mode: multiply;
   overflow: hidden;
   width: 80%;
-  height:auto;
-  display: block;
-  padding-bottom:20%;
+  height: auto;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(241, 243, 245);
+  padding-bottom: 20%;
   margin-bottom: 0 auto;
   position: relative;
 }
@@ -23,18 +22,25 @@
 .image-container img {
   max-width: 100%;
   height: auto;
+  max-height: 100%;
   overflow: clip;
   overflow-clip-margin: content-box;
 }
 
 .card-body {
-  padding:10px 0 0;
+  padding: 10px 0 0;
   display: flex;
   flex-direction: column;
+  background-color: rgb(241, 243, 245);
 }
 
-.card-title h2 {
-  font-size: 16px;
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
   margin: 0;
 }
 
@@ -56,32 +62,11 @@
   cursor: pointer;
   outline: none;
   margin: 0;
-  background-color: black;
-  border: 1px solid #898383;
 }
 
+/* Add a black border to the selected color button */
 .color-button.selected {
-  border:black;
-  
-}
-
-.cart-icon {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: black;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card-container:hover .cart-icon {
-  opacity: 1;
-}
-
-.cart-icon:hover {
-  color: red;
+  border: 2px solid black;
 }
 
 .image-container:hover::after {
@@ -95,18 +80,22 @@
   z-index: 1;
 }
 
-@media screen and (max-width: 768px){
-  .card-container{
-    width:33.3%
+@media screen and (max-width: 768px) {
+  .card-container {
+    width: 33.3%;
   }
 }
 
-@media only screen and (max-width:480px){
-  .card-container{
-    width:50%;
+@media only screen and (max-width: 480px) {
+  .card-container {
+    width: 50%;
   }
 
-  .card-body{
+  .card-body h4 {
     font-size: 12px;
+  }
+
+  .card-body h2 {
+    font-size: 14px;
   }
 }
