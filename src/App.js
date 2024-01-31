@@ -66,7 +66,7 @@ const App = () => {
         <div className="cards-container">
           {currentCards.map((card, index) => (
             <Card
-              key={index}
+              key={`${card.cap}${index}`}
               imageUrls={card.image_url}
               title={card.cap}
               price={card.list_price.toLocaleString()}
