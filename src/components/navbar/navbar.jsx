@@ -6,7 +6,7 @@ import "./navbar.css";
 const Navbar = ({ cartItemsCount }) => {
   return (
     <div className="navbar">
-      <div className="heading">Goovin</div>
+      <div className="heading"><h2>Goovin</h2></div>
       <div className="cart-container">
         <HiOutlineShoppingBag className="cart-icon" />
         {cartItemsCount > 0 && <div className="cart-count">{cartItemsCount}</div>}
